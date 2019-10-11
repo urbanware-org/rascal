@@ -11,7 +11,7 @@
 # GitLab: https://gitlab.com/urbanware-org/rascal
 # ============================================================================
 
-__version__ = "1.0.4"
+__version__ = "1.0.5-beta1"
 
 import configparser
 import os

@@ -4,8 +4,8 @@ README (Rascal)
     Project
 
         Rascal
-        Version 1.0.4 (based on Python framework 2.x)
-        Copyright (C) 2018 by Ralf Kilian
+        Version 1.0.5 Beta 1 (based on Python framework 2.x)
+        Copyright (C) 2019 by Ralf Kilian
 
         GitHub: https://github.com/urbanware-org/rascal
         GitLab: https://gitlab.com/urbanware-org/rascal
