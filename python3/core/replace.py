@@ -15,15 +15,17 @@ __version__ = "1.0.4"
 
 import configparser
 import os
-from . import paval as pv
 import random
 import sys
+from . import paval as pv
+
 
 def get_version():
     """
         Return the version of this module.
     """
     return __version__
+
 
 def replace_chars(config_file, string="", remove_spaces=False,
                   remove_chars=False, number=1, sort_length=False):
@@ -55,12 +57,11 @@ def replace_chars(config_file, string="", remove_spaces=False,
 
     dict_chars = {}
     for char in string:
-        if char == "[" or char == "]" or char == "=" or char == ";" or \
-           char == ",":
+        if char in ("[", "]", "=", ";", ","):
             continue
 
         value = __read_option(config_file, "Replace", char.upper())
-        if not char in dict_chars:
+        if char not in dict_chars:
             replace_chars = value.strip(", ").replace(" ", "").split(",")
             dict_chars.update({char: replace_chars})
 
@@ -74,6 +75,7 @@ def replace_chars(config_file, string="", remove_spaces=False,
 
     return output
 
+
 def __transform(string, string_list, dict_chars):
     """
         Core method to scramble the given string based on the given config
@@ -82,7 +84,7 @@ def __transform(string, string_list, dict_chars):
     string_new = ""
     for char in string:
         replace_chars = dict_chars.get(char)
-        if replace_chars == None or replace_chars[0] == "":
+        if replace_chars is None or replace_chars[0] == "":
             string_new += char
             continue
 
@@ -90,14 +92,15 @@ def __transform(string, string_list, dict_chars):
         rnd = random.randint(0, len(replace_chars) - 1)
         string_new += replace_chars[rnd]
 
-    while (string_new == None) or (string_new in string_list):
+    while string_new is None or string_new in string_list:
         try:
             string_new = __transform(string, string_list, dict_chars)
         except:
-            raise Exception("The input string seems to be too short to " \
+            raise Exception("The input string seems to be too short to "
                             "return the requested amount of data.")
 
     return string_new
+
 
 def __read_option(file_path, section, option):
     """
@@ -117,4 +120,3 @@ def __read_option(file_path, section, option):
     return str(value)
 
 # EOF
-
