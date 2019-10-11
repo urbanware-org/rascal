@@ -7,8 +7,8 @@ README (Rascal)
         Version 1.0.4 (based on Python framework 3.x)
         Copyright (C) 2018 by Ralf Kilian
 
-        Website: http://www.urbanware.org
         GitHub: https://github.com/urbanware-org/rascal
+        GitLab: https://gitlab.com/urbanware-org/rascal
 
     Definition
 
@@ -40,15 +40,12 @@ README (Rascal)
 
     Requirements
 
-        The code of this Rascal version was simply converted from Python 2.x
-        to 3.x syntax using the 2to3 tool and has only been tested
-        fundamentally.
-
         In order to use the project, Python 3.2 or higher is recommended, but
         it may also work with earlier versions.
 
-        If you need a version that works with Python 2.x, you can also find
-        one on the website of the project mentioned above.
+        This version of Rascal was built for the Python 3.x framework. If you
+        need a version that works with Python 2.x, you can also find one on
+        the website of the project mentioned above.
 
     Usage
 
