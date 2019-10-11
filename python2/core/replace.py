@@ -55,8 +55,7 @@ def replace_chars(config_file, string="", remove_spaces=False,
 
     dict_chars = {}
     for char in string:
-        if char == "[" or char == "]" or char == "=" or char == ";" or \
-           char == ",":
+        if char in ("[", "]", "=", ";", ","):
             continue
 
         value = __read_option(config_file, "Replace", char.upper())
@@ -117,4 +116,3 @@ def __read_option(file_path, section, option):
     return str(value)
 
 # EOF
-
