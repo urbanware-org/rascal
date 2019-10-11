@@ -14,6 +14,7 @@
 import os
 import sys
 
+
 def main():
     from core import clap
     from core import replace as r
@@ -24,9 +25,9 @@ def main():
         print "%s: error: %s" % (os.path.basename(sys.argv[0]), e)
         sys.exit(1)
 
-    p.set_description("Replace characters in a string with a random one " \
+    p.set_description("Replace characters in a string with a random one "
                       "from a user-defined character list.")
-    p.set_epilog("Further information and usage examples can be found " \
+    p.set_epilog("Further information and usage examples can be found "
                  "inside the documentation file for this script.")
 
     # Define required arguments
@@ -42,10 +43,10 @@ def main():
                  "length", True, False)
     p.add_avalue("-n", "--number", "number of strings to return", "number", 1,
                  False)
-    p.add_switch("-m", "--remove-chars", "remove certain user-defined " \
+    p.add_switch("-m", "--remove-chars", "remove certain user-defined "
                  "characters from input string", "remove_chars", True,
                  False)
-    p.add_switch("-r", "--remove-spaces", "remove all spaces from input " \
+    p.add_switch("-r", "--remove-spaces", "remove all spaces from input "
                  "string", "remove_spaces", True, False)
     p.add_switch(None, "--version", "print the version number and exit", None,
                  True, False)
@@ -68,6 +69,7 @@ def main():
             print string
     except Exception as e:
         p.error(e)
+
 
 if __name__ == "__main__":
     main()
