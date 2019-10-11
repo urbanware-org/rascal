@@ -1,0 +1,39 @@
+
+CHANGELOG (Rascal)
+
+    Version 1.0.4 (2018-04-14)
+
+        + Added new versions of the Clap and PaVal core modules (replaced the
+          existing ones).
+
+        * Revised (refurbished) all components of the project in general
+          (negligible changes).
+
+    Version 1.0.3 (2015-03-26)
+
+        + Added the optional command-line argument to sort the output data by
+          its length.
+
+        * Revised (reduced) some code inside the Rascal Character Replacement
+          core module.
+
+    Version 1.0.2 (2014-10-29)
+
+        + Added the optional command-line argument which allows removing
+          certain user-defined characters from the input string.
+
+        * Revised some methods inside the Rascal Character Replacement core
+          module (improved the code for reading and processing values from the
+          config file).
+
+    Version 1.0.1 (2014-10-18)
+
+        + Added the optional command-line argument to remove all spaces from
+          the input string.
+        + Added the optional command-line argument to return a certain amount
+          of modified strings.
+
+    Version 1.0.0 (2014-06-30)
+
+        * First official release of this major version.
+

@@ -1,0 +1,222 @@
+
+USAGE (rascal.py)
+
+    Contents:
+
+        1.  Definition
+        2.  General stuff
+          2.1  How to run Python scripts
+          2.2  Overview of all command-line arguments
+        3.  Replace the characters of a string
+          3.1  Fundamental information
+             3.1.1  Same input with different output
+             3.1.2  Strings with special characters
+          3.2  Enhance the strength
+        4.  Configuration file
+          4.1  Syntax
+          4.2  Replace letters
+          4.3  Replace numbers
+          4.4  Replace special characters
+          4.5  Remove all whitespaces
+          4.6  Remove user-defined characters
+          4.7  Duplicate entries
+
+    1. Definition
+
+        Basically, the Rascal tool simply replaces letters, numbers and
+        further characters with random resembling user-defined ones.
+
+    2. General stuff
+
+        2.1 How to run Python scripts
+
+            All usage examples below show how to execute the Python scripts on
+            the shell of a Unix-like system. If you do not know, how to run
+            those scripts on your operating system, you may have a look at
+            this page:
+
+                http://www.urbanware.org/howto_python.html
+
+        2.2 Overview of all command-line arguments
+
+            Usually, each script requires command-line arguments to operate.
+            So, to get an overview of all arguments available, simply run the
+            script with the "--help" argument. For example:
+
+                $ ./rascal.py --help
+
+    3. Replace the characters of a string
+
+        3.1 Fundamental information
+
+            3.1.1 Same input with different output
+
+                First of all, the characters used to replace those in the
+                string are stored in a config file (see section 4).
+
+                For example, if you run Rascal to convert the string "This is
+                a simple text" using the included sample configuration file
+                "/tmp/sample_multiple.cfg", type
+
+                    $ ./rascal.py -c /tmp/sample_multiple.cfg \
+                                  -s 'This is a simple text'
+
+                which should return something like
+
+                    7|-|iS I5 @ si/V\pLE +EX7
+
+                and if you run it again, the output will be different from the
+                first one (depending on the config file contents):
+
+                    tH|5 !$ @ 5|Mp|_e +e><t
+
+            3.1.2 Strings with special characters
+
+                This actually is related to Unix-like systems. Maybe it also
+                applies to others.
+
+                It is recommended to encase the input string by using single
+                quotes ('), especially if it contains special characters. This
+                will pass the raw string to Rascal.
+
+                When using raw strings, control characters such as carriage
+                returns ("\r"), horizontal tabs ("\t") or line feeds ("\n")
+                will be ignored. This also affects shell variables as well as
+                shell specific control characters.
+
+                So, for example, use this format
+
+                    $ ./rascal.py -c /tmp/sample_multiple.cfg -s 'Foobar'
+
+                instead of the following
+
+                    $ ./rascal.py -c /tmp/sample_multiple.cfg -s "Foobar"
+
+                to avoid string related problems.
+
+        3.2 Enhance the strength
+
+            Meanwhile, dictionary attacks also replace letters using common
+            leetspeek characters (such as "@" for the letter "a") to find out
+            passwords.
+
+            So, it is recommended to replace a single letter with multiple
+            ones. For example, the letter "M" can be replaced using "|V|",
+            "|v|", "[V]", "[v]", "(V)" or "/V\".
+
+            Furthermore, mixing up the characters like "[V)", "|V]" or "|V\"
+            may also prevent or at least complicate dictionary attacks.
+
+    4. Config file
+
+        4.1 Syntax
+
+            The config file is an INI-like file, and looks like this:
+
+                [Replace]
+                A = A, a, 4, @, /-\
+                B = B, b, 8
+                C = C, c, (
+                D = D, d, |), [)
+                (...)
+
+            All the characters used to replace must be comma separated as
+            shown above. Syntax characters used by INI-like files ("[", "]",
+            "=", and ";") as well as commas (",") cannot be replaced, so e. g.
+            this line
+
+                [ = [, {, (, <
+
+            will not work. These characters will be ignored.
+
+        4.2 Replace letters
+
+            In this sample config, the letter "A" (uppercase and lowercase)
+            will be replaced with "A", "a", "4", "@" or "/-\". The characters
+            "A" and "a" are no special characters, but due to them, uppercase
+            letters in the string may be converted to lowercase and vice
+            versa.
+
+            If you want to replace the letter "A" (uppercase and lowercase)
+            with numbers and special characters only, the line would look like
+            this:
+
+                A = 4, @, /-\
+
+            Furthermore, it does not matter if the character that should be
+            replaced is uppercase or lowercase. So, the config file entry
+
+                A = A, a, 4, @, /-\
+
+            will be handled by Rascal like this one
+
+                a= A, a, 4, @, /-\
+
+            and also have the same effect.
+
+        4.3 Replace numbers
+
+            Numbers can also be replaced, for example:
+
+                0= O, o, (), °
+
+        4.4 Replace special characters
+
+            You can also replace characters like an excalamation mark ("!"),
+            for example:
+
+                ! = !, 1, one, eleven
+
+            If you run Rascal again with these arguments
+
+                $ ./rascal.py -c /tmp/sample_multiple.cfg \
+                              -s 'This is leet!!!!!!!!!!!!'
+
+            it might return something like this:
+
+                7H1$ i5 133t!!11!one!!11eleven!
+
+        4.5 Remove all whitespaces
+
+            To remove all spaces inside the input string you can use the
+            additional "--remove-spaces" command-line argument:
+
+                $ ./rascal.py -c /tmp/sample_multiple.cfg --remove-spaces \
+                              -s 'Some spaces here'
+
+        4.6 Remove user-defined characters
+
+            You can also remove certain characters from the string before its
+            characters get replaced. Inside the config file is a section
+            exactly for that purpose:
+
+                [Remove]
+                Characters = .,:;!?-"'
+
+            Just add the characters that should be removed to this option as
+            shown above. Whitespaces will be ignored, so the line
+
+                Characters = .,:; !?-"'
+
+            would have the same effect as this one:
+
+                Characters = .,:;!?-"'
+
+            Now, you can run Rascal with the additional "--remove-chars"
+            command-line argument to remove the user-defined characters
+            configured inside the config file:
+
+                $ ./rascal.py -c /tmp/sample_multiple.cfg --remove-chars \
+                              -s 'What!?'
+
+        4.7 Duplicate entries
+
+            For example, if you add duplicate entries for the same letter like
+            this
+
+                A = 4, @, /-\
+                A = a, A, 4
+                A = 4, @
+
+            the last of them will be used and the others will be ignored.
+
