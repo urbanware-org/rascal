@@ -5,6 +5,7 @@
 *   [Details](#details)
 *   [Usage](#usage)
 *   [Requirements](#requirements)
+*   [Contact](#contact)
 *   [Useless facts](#useless-facts)
 
 ----
@@ -41,6 +42,12 @@ Depending on which version of the framework you are using:
 *   *Python* 3.x (version 3.2 or higher is recommended, may also work with earlier versions)
 
 [Top](#rascal-)
+
+## Contact
+
+Any suggestions, questions, bugs to report or feedback to give?
+
+You can contact me by sending an email to [dev@urbanware.org](mailto:dev@urbanware.org).
 
 ## Useless facts
 
