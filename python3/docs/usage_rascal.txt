@@ -5,8 +5,6 @@ USAGE (rascal.py)
 
         1.  Definition
         2.  General stuff
-          2.1  How to run Python scripts
-          2.2  Overview of all command-line arguments
         3.  Replace the characters of a string
           3.1  Fundamental information
              3.1.1  Same input with different output
@@ -28,22 +26,11 @@ USAGE (rascal.py)
 
     2. General stuff
 
-        2.1 How to run Python scripts
+        Usually, each script requires command-line arguments to operate.
+        So, to get an overview of all arguments available, simply run the
+        script with the "--help" argument. For example:
 
-            All usage examples below show how to execute the Python scripts on
-            the shell of a Unix-like system. If you do not know, how to run
-            those scripts on your operating system, you may have a look at
-            this page:
-
-                http://www.urbanware.org/howto_python.html
-
-        2.2 Overview of all command-line arguments
-
-            Usually, each script requires command-line arguments to operate.
-            So, to get an overview of all arguments available, simply run the
-            script with the "--help" argument. For example:
-
-                $ ./rascal.py --help
+            $ ./rascal.py --help
 
     3. Replace the characters of a string
 
