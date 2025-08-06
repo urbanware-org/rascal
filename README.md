@@ -24,6 +24,9 @@ For example, the password `maverick` was converted to `[V]4vE|2!(k`.
 
 So, in first place, *Rascal* is (or has become) a password scrambler to strengthen weak passwords based on words by replacing their letters, numbers and further characters with random resembling user-defined ones. Of course, it still works as text-to-leetspeak converter as well.
 
+> [!NOTE]
+> This project was **officially discontinued** as of August 2025 and is **no longer maintained**.
+
 [Top](#rascal-)
 
 ## Usage
@@ -45,9 +48,9 @@ Depending on which version of the framework you are using:
 
 ## Contact
 
-Any suggestions, questions, bugs to report or feedback to give?
+As mentioned above, this project has been discontinued. For this reason, no new features will be implemented, existing features will not be enhanced and remaining bugs will not be fixed either.
 
-You can contact me by sending an email to [dev@urbanware.org](mailto:dev@urbanware.org) or by opening a *GitHub* issue (which I would prefer if you have a *GitHub* account).
+However, if you have questions about it, you can contact me by sending an email to <dev@urbanware.org>.
 
 ## Useless facts
 
